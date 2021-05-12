@@ -8,8 +8,7 @@ public class SolutionCamouflage {
 	}
 	
 	public static int solution(String[][] clothes) {
-        int answer = 0;
-        int combi = 1;
+        int answer = 1;
         
         Map<String, Integer> map = new HashMap<>();
         
@@ -19,16 +18,9 @@ public class SolutionCamouflage {
         	map.put(key, value == null ? 1:value+1);
         }
         for (Integer n : map.values()) {
-        	answer += n;
-        }
-        if (map.values().size()>1) {
-        	for (int i=0; i<map.values().size(); i++) {
-        		for (Integer n : map.values()) {
-                	answer += n;
-                }
-        	}
+        	answer*=(n+1);
         }
         
-        return answer;
+        return answer-1;
     }
 }
