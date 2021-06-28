@@ -1,4 +1,5 @@
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Deque;
 
 public class SolutionTruckPassingBridge {
@@ -16,15 +17,12 @@ public class SolutionTruckPassingBridge {
        	for (int i = 0; (sum(queue) != 0 || i < truck_weights.length); i++) {
        		answer++;
        		if (i >= truck_weights.length) {
-                if (queue.size() >= bridge_length) {
-           			queue.remove();
-                }
                 queue.add(0);
        		}
-       		else if (queue.size() >= bridge_length) {
+       		if (queue.size() >= bridge_length) {
        			queue.remove();
        		}
-       		else if (sum(queue) + truck_weights[i] <= weight) {
+       		if (sum(queue) + truck_weights[i] <= weight) {
        			queue.add(truck_weights[i]);
        		}
        		else {
@@ -32,6 +30,7 @@ public class SolutionTruckPassingBridge {
        			i--;
        		}
        	}
+       	
         return answer;
     }
 	
@@ -42,4 +41,6 @@ public class SolutionTruckPassingBridge {
 		}
 		return result;
 	}
+	
+	
 }
